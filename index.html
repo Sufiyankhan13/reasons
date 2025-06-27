@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Why I Love You ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scene-container">
+    <!-- Sun -->
+    <div class="sun"></div>
+    
+    <!-- Floating Hearts -->
+    <div class="heart heart1">💖</div>
+    <div class="heart heart2">💕</div>
+    <div class="heart heart3">💗</div>
+    
+    <!-- Butterflies -->
+    <div class="butterfly butterfly1">🦋</div>
+    <div class="butterfly butterfly2">🦋</div>
+    <div class="butterfly butterfly3">🦋</div>
+    
+    <!-- Hills -->
+    <div class="hill hill1"></div>
+    <div class="hill hill2"></div>
+    <div class="hill hill3"></div>
+    
+    <!-- Flower Field -->
+    <div class="flower-field"></div>
+    
+    <!-- Love Message -->
+    <div class="love-message" id="loveMessage">💕 For My Beautiful Girl 💕</div>
+    
+    <!-- Quote Container -->
+    <div class="quote-container">
+        <div class="quote-text" id="quoteText">Loading your daily love reason...</div>
+        <div class="quote-author" id="quoteAuthor"></div>
+    </div>
+    
+    <!-- New Quote Button -->
+    <button class="new-quote-btn" onclick="getNewQuote()">💝 New Love Reason</button>
+</div>
+
+<script>
+    // Array of personal reasons why I love you
+    const loveReasons = [
+        {
+            text: "U make me feel most comfy",
+            number: 1
+        },
+        {
+            text: "U don't judge me",
+            number: 2
+        },
+        {
+            text: "I love you because you are annoying as hell",
+            number: 3
+        },
+        {
+            text: "I love You because u care of me more than me",
+            number: 4
+        },
+        {
+            text: "I love your stupid talks and rentig at times",
+            number: 5
+        },
+        {
+            text: "I love you because you are the reasons for my morning",
+            number: 6
+        },
+        {
+            text: "U r smile makes my day",
+            number: 7
+        },
+        {
+            text: "U love listening me",
+            number: 8
+        },
+        {
+            text: "I love you u go on speaking",
+            number: 9
+        },
+        {
+            text: "I love your madness",
+            number: 10
+        },
+        {
+            text: "I love ur anger",
+            number: 11
+        },
+        {
+            text: "I love ur sense of dressing",
+            number: 12
+        },
+        {
+            text: "I Love you when u say mera sufiyan",
+            number: 13
+        },
+        {
+            text: "I love when u show lve towards me in another way I have never thought",
+            number: 14
+        },
+        {
+            text: "I love you when u cry not because I love tht but because ur so innocent",
+            number: 15
+        },
+        {
+            text: "Ur presence calms me down when u just goo on listening",
+            number: 16
+        },
+        {
+            text: "I wont say u are good speaker but I wll say ur good supporter",
+            number: 17
+        },
+        {
+            text: "I love the way when u drive in slay mode",
+            number: 18
+        },
+        {
+            text: "I love the way when I sit and u just keeping looking at me",
+            number: 19
+        },
+        {
+            text: "I love ur hair jab bhi aage aaye mann krta he piche kr du",
+            number: 20
+        }
+        // More reasons will be added everyday...
+    ];
+
+    // Function to generate flowers
+    function generateFlowers() {
+        const flowerField = document.querySelector('.flower-field');
+        const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐'];
+        
+        for (let i = 0; i < 30; i++) {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDelay = Math.random() * 4 + 's';
+            flower.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            flowerField.appendChild(flower);
+        }
+    }
+
+    // Function to generate sparkles
+    function generateSparkles() {
+        for (let i = 0; i < 20; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = '✨';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 60 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.querySelector('.scene-container').appendChild(sparkle);
+        }
+    }
+
+    // Function to get today's date with romantic touch
+    function getTodaysDate() {
+        const today = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+        return today.toLocaleDateString('en-US', options);
+    }
+
+    // Function to get daily love reason based on date
+    function getDailyLoveReason() {
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+        const reasonIndex = dayOfYear % loveReasons.length;
+        return loveReasons[reasonIndex];
+    }
+
+    // Function to get a random love reason (for the button)
+    function getNewQuote() {
+        const randomIndex = Math.floor(Math.random() * loveReasons.length);
+        const reason = loveReasons[randomIndex];
+        
+        document.getElementById('quoteText').textContent = reason.text;
+        document.getElementById('quoteAuthor').textContent = `Reason #${reason.number}`;
+        
+        // Add animation effect
+        const container = document.querySelector('.quote-container');
+        container.style.animation = 'none';
+        setTimeout(() => {
+            container.style.animation = 'fadeIn 1s ease-in';
+        }, 10);
+    }
+
+    // Initialize the page
+    function init() {
+        // Set the love message with date
+        document.getElementById('loveMessage').textContent = `💕 ${getTodaysDate()} 💕`;
+        
+        // Set today's love reason
+        const dailyReason = getDailyLoveReason();
+        document.getElementById('quoteText').textContent = dailyReason.text;
+        document.getElementById('quoteAuthor').textContent = `Reason #${dailyReason.number}`;
+        
+        // Generate flowers and sparkles
+        generateFlowers();
+        generateSparkles();
+    }
+
+    // Run initialization when page loads
+    window.onload = init;
+</script>
+</body>
+</html>

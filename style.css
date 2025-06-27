@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #FFB6C1 0%,     /* Light pink */
+        #FFC0CB 20%,    /* Pink */
+        #FFCCCB 40%,    /* Light coral */
+        #FFE4E1 60%,    /* Misty rose */
+        #F0E68C 80%,    /* Khaki */
+        #98FB98 100%    /* Pale green */
+    );
+}
+
+.scene-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sun - more romantic with pink/golden hues */
+.sun {
+    position: absolute;
+    top: 12%;
+    right: 15%;
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, #FFD700 0%, #FF69B4 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 80px rgba(255, 105, 180, 0.7);
+    animation: sunGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+    0% { box-shadow: 0 0 80px rgba(255, 105, 180, 0.7); }
+    100% { box-shadow: 0 0 120px rgba(255, 105, 180, 0.9); }
+}
+
+/* Floating hearts instead of clouds */
+.heart {
+    position: absolute;
+    font-size: 30px;
+    color: rgba(255, 105, 180, 0.6);
+    animation: floatHeart 25s infinite linear;
+}
+
+.heart1 {
+    top: 20%;
+    left: -60px;
+    animation-delay: 0s;
+}
+
+.heart2 {
+    top: 15%;
+    left: -40px;
+    animation-delay: -8s;
+    font-size: 25px;
+}
+
+.heart3 {
+    top: 25%;
+    left: -80px;
+    animation-delay: -15s;
+    font-size: 35px;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateX(-80px) translateY(0px) rotate(0deg); }
+    25% { transform: translateX(25vw) translateY(-20px) rotate(10deg); }
+    50% { transform: translateX(50vw) translateY(10px) rotate(-5deg); }
+    75% { transform: translateX(75vw) translateY(-15px) rotate(15deg); }
+    100% { transform: translateX(calc(100vw + 80px)) translateY(0px) rotate(0deg); }
+}
+
+/* Butterflies instead of birds */
+.butterfly {
+    position: absolute;
+    font-size: 20px;
+    animation: fly 18s infinite linear;
+}
+
+.butterfly1 {
+    top: 30%;
+    left: -50px;
+    animation-delay: -5s;
+}
+
+.butterfly2 {
+    top: 35%;
+    left: -30px;
+    animation-delay: -10s;
+}
+
+.butterfly3 {
+    top: 25%;
+    left: -70px;
+    animation-delay: -15s;
+}
+
+@keyframes fly {
+    0% { transform: translateX(-50px) translateY(0px) scale(1); }
+    25% { transform: translateX(25vw) translateY(-15px) scale(1.1); }
+    50% { transform: translateX(50vw) translateY(8px) scale(0.9); }
+    75% { transform: translateX(75vw) translateY(-10px) scale(1.1); }
+    100% { transform: translateX(calc(100vw + 50px)) translateY(0px) scale(1); }
+}
+
+/* Flower field instead of grass */
+.flower-field {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(to top, #90EE90 0%, #98FB98 100%);
+}
+
+.flower {
+    position: absolute;
+    bottom: 20px;
+    font-size: 20px;
+    animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+}
+
+/* Romantic hills */
+.hill {
+    position: absolute;
+    bottom: 160px;
+    border-radius: 100px 100px 0 0;
+    background: linear-gradient(to top, #DDA0DD, #FFB6C1);
+}
+
+.hill1 {
+    left: 5%;
+    width: 200px;
+    height: 100px;
+}
+
+.hill2 {
+    left: 20%;
+    width: 150px;
+    height: 80px;
+}
+
+.hill3 {
+    right: 15%;
+    width: 180px;
+    height: 90px;
+}
+
+/* Quote Container - more romantic styling */
+.quote-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 45px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+    max-width: 650px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 182, 193, 0.4);
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.quote-text {
+    font-size: 26px;
+    color: #8B008B;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.2);
+}
+
+.quote-author {
+    font-size: 19px;
+    color: #C71585;
+    font-weight: bold;
+}
+
+.love-message {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 182, 193, 0.9);
+    padding: 20px 25px;
+    border-radius: 20px;
+    font-size: 18px;
+    color: #8B008B;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+}
+
+.new-quote-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #FF69B4, #FFB6C1);
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.new-quote-btn:hover {
+    background: linear-gradient(45deg, #FFB6C1, #FF69B4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4);
+}
+
+/* Floating sparkles */
+.sparkle {
+    position: absolute;
+    color: #FFD700;
+    font-size: 12px;
+    animation: sparkle 3s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quote-container {
+        max-width: 90%;
+        padding: 35px 25px;
+    }
+    
+    .quote-text {
+        font-size: 22px;
+    }
+    
+    .quote-author {
+        font-size: 17px;
+    }
+    
+    .sun {
+        width: 90px;
+        height: 90px;
+        top: 8%;
+        right: 8%;
+    }
+    
+    .love-message {
+        font-size: 16px;
+        padding: 15px 20px;
+    }
+}
